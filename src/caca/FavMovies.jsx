@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // CARA BUAT API KEY TMDB
 // https://www.themoviedb.org/settings/api
@@ -11,6 +13,7 @@ const token =
 const FavMovies = () => {
   const [selectLanguage, setSelectLanguage] = useState("");
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   const favMovies = async () => {
     try {
@@ -69,7 +72,9 @@ const FavMovies = () => {
               <div
                 key={movie.id}
                 className="flex flex-col gap-y-3 max-w-[380px] min-w-[300px] max-sm:min-w-[250px] shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] rounded-lg items-center"
-              >
+                onClick={() => {
+                  navigate("/movie-detail", { state: { id: movie.id } });
+                }} >
                 <div className="bg-cover min-h-[250px] w-full rounded-t-md flex flex-col items-center pt-5 relative">
                   <img
                     className="absolute -z-20 max-h-[250px] object-cover w-full top-0 left-0 filter blur-[3px]"

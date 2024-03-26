@@ -8,6 +8,7 @@ import MovieSearch from "./junia/searchMovie";
 import MovieDetail from "./junia/detailMovie";
 import TrendingMovie from "./Hilzi/trendingMovies";
 import PopularMovie from "./eka/PopularMovie";
+import FavMovies from "./caca/FavMovies";
 
 
 //mengisiasi object router 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/movie-popular",
     element: <PopularMovie/>,
+  },
+  {
+    path: "/movie-favorite",
+    element: <FavMovies/>,
   },
 ]);
 

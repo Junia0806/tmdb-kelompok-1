@@ -19,7 +19,7 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  to="/about"
+                    to={`/movie-favorite`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
                   Favorite

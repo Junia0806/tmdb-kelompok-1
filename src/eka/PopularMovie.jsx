@@ -3,6 +3,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const API_KEY = "d0ae83de32a46c56ef37b5365b3cb76e";
 
@@ -11,6 +12,7 @@ export default function PopularMovie() {
   const [language, setLanguage] = useState("");
   const [page, setPage] = useState("");
   const [region, setRegion] = useState("");
+  const navigate = useNavigate();
 
   const moviesPopular = async () => {
     try {
@@ -104,7 +106,9 @@ export default function PopularMovie() {
               className="mt-2 rounded-lg flex flex-col gap-y-3 max-w[380px] max-w[300px] max-sm:min-w-[250px] items-center shadow-[0_0_2px_1px_rgb(0,0,0,0.3)]"
               style={{ height: "100%" }}
             >
-              <div className="bg-cover min-h-[250px] w-full rounded-t-md flex flex-col items-center pt-5 relative">
+              <div className="bg-cover min-h-[250px] w-full rounded-t-md flex flex-col items-center pt-5 relative" onClick={() => {
+                  navigate("/movie-detail", { state: { id: movie.id } });
+                }}>
                 <img
                   className="absolute -z-20 max-h-[250px] object-cover w-full top-0 left-0 filter blur-[3px]"
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
