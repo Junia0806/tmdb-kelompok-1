@@ -30,7 +30,7 @@ export default function Home() {
                   to={`/movie-popular`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
-                  Now Playing
+                   Popular
                 </Link>
               </li>
               <li>
@@ -38,7 +38,7 @@ export default function Home() {
                 to={`/movie-now`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
-                  Popular
+                 Now Playing
                 </Link>
               </li>
             </ul>
