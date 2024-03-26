@@ -1,8 +1,12 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function TrendingMovie() {
   const [trendingData, setTrendingData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTrendingData = async () => {
@@ -37,8 +41,10 @@ function TrendingMovie() {
       {trendingData && trendingData.results ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {trendingData.results.map((item, index) => (
-            <div key={index} className="border p-4 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-2">
+            <div key={index} className="border p-4 rounded-lg shadow-md" onClick={() => {
+                  navigate("/movie-detail", { state: { id: item.id } });
+                }}>
+              <h2 className="text-xl font-semibold mb-2 cursor-pointer" >
                 {item.title || item.name}
               </h2>
               <div className="bg-cover min-h-[250px] w-full rounded-t-md flex flex-col items-center pt-5 relative">
