@@ -27,7 +27,7 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  to="/services"
+                  to={`/movie-popular`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
                   Now Playing
@@ -35,7 +35,7 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                to={`/movie-popular`}
+                to={`/movie-now`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
                   Popular

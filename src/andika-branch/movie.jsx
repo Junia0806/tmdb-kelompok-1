@@ -1,12 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_KEY = "570c36d75740509c00d865a804d826a5";
 const BASE_URL = "https://api.themoviedb.org/3/movie/now_playing";
 
 const NowPlaying = () => {
   const [movies, setMovies] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchTopRatedMovies = async () => {
       try {
@@ -27,7 +29,9 @@ const NowPlaying = () => {
       <h1 className="text-4xl font-bold text-center mb-8">Now Playing Movies</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {movies.map((movie) => (
-          <div key={movie.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div key={movie.id} className="bg-white rounded-lg shadow-lg overflow-hidden" onClick={() => {
+                  navigate("/movie-detail", { state: { id: movie.id } });
+                }}>
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt={movie.title}
