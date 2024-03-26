@@ -93,7 +93,7 @@ export default function MovieDetail() {
                   className="bg-gray-100 rounded-lg shadow-md p-4"
                 >
                   <h4 className="text-xl font-semibold mb-2">
-                   {review.author}
+                    {review.author}
                   </h4>
                   <img
                     src={
@@ -105,7 +105,11 @@ export default function MovieDetail() {
                     className="w-16 h-16 rounded-full mb-2"
                   />
                   <p className="text-lg mb-2">
-                    Rating: {review.author_details.rating} / 10
+                    Rating:
+                    {review.author_details.rating
+                      ? review.author_details.rating
+                      : 0}
+                    / 10
                   </p>
                   <p className="text-lg mb-2">
                     Created at: {review.created_at}
