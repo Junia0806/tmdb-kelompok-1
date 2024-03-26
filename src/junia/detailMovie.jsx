@@ -10,6 +10,12 @@ export default function MovieDetail() {
   const [detail, setDetail] = useState(null);
   const [reviews, setReviews] = useState([]);
 
+  function limitWord(text, limit) {
+    const words = text.split(/\s+/); // Split teks berdasarkan spasi
+    const slicedText = words.slice(0, limit).join(" "); // Ambil hanya jumlah kata sesuai limit
+    return slicedText + (words.length > limit ? "..." : ""); // Tambahkan elipsis jika jumlah kata melebihi limit
+  }
+
   useEffect(() => {
     const fetchDetail = async () => {
       try {
@@ -45,49 +51,68 @@ export default function MovieDetail() {
       <div className="bg-white rounded-lg shadow-lg p-4">
         <div className="flex p-10">
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-2">{detail?.title}</h2>
-            <h2 className="text-lg text-gray-600 mb-2">
-              {detail?.release_date}
+            <h2 className="text-3xl font-bold mb-2 text-blue-900">
+              {detail?.title}
             </h2>
-            <p className="text-gray-800 mb-4">{detail?.overview}</p>
-            <h2 className="mb-2">Popularity: {detail?.popularity}</h2>
+            <h2 className="text-gray-600 mb-2">
+              Release date: {detail?.release_date}
+            </h2>
             <h2 className="mb-2">Status: {detail?.status}</h2>
+            <h2 className="mb-2">Popularity: {detail?.popularity} viewers</h2>
+            <h2 className="mb-2">Runtime: {detail?.runtime} minutes</h2>
+            <p className="text-gray-800 mb-4">{detail?.overview}</p>
             <Link
               to={"/movie"}
-              className="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4 w-72 text-center"
+              className="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4 w-72 text-center transition duration-300 ease-in-out transform hover:scale-105"
             >
               BACK TO SEARCH MOVIE
             </Link>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 flex justify-center items-center">
             <img
               src={`https://image.tmdb.org/t/p/w500/${detail?.poster_path}`}
               alt={detail?.title}
-              className="w-auto h-82 rounded-lg max-w-full"
+              className="w-auto max-h-96 rounded-lg"
             />
           </div>
         </div>
 
-        <div className="mt-8">
-          <h3 className="text-2xl font-bold mb-4">Reviews {detail?.title}</h3>
+        <div className="mt-8 p-4">
+          <h3 className="text-3xl font-bold mb-2 text-blue-900 text-center">
+            Reviews {detail?.title}
+          </h3>
           {reviews.length === 0 ? (
-            <p className="text-gray-700 italic">
-              Belum ada review pada film {detail?.title}{" "}
+            <p className="text-gray-700 italic text-center text-l">
+              Belum ada review pada film {detail?.title}
             </p>
           ) : (
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {reviews.map((review, index) => (
-                <div key={index} className="w-full mb-4 md:px-2">
-                  <div className="bg-gray-100 rounded-lg shadow-md p-4">
-                    <h4 className="text-xl font-semibold">
-                      Author: {review.author}
-                    </h4>
-                    <p className="text-l">
-                      Rating: {review.author_details.rating} / 10
-                    </p>
-                    <p className="text-l">Created at: {review.created_at}</p>
-                    <p className="text-gray-700 mt-2">{review.content}</p>
-                  </div>
+                <div
+                  key={index}
+                  className="bg-gray-100 rounded-lg shadow-md p-4"
+                >
+                  <h4 className="text-xl font-semibold mb-2">
+                   {review.author}
+                  </h4>
+                  <img
+                    src={
+                      review.author_details.avatar_path
+                        ? `https://image.tmdb.org/t/p/w500/${review.author_details.avatar_path}`
+                        : "public/foto.png" // Ganti dengan path gambar default Anda
+                    }
+                    alt={`Avatar of ${review.author}`}
+                    className="w-16 h-16 rounded-full mb-2"
+                  />
+                  <p className="text-lg mb-2">
+                    Rating: {review.author_details.rating} / 10
+                  </p>
+                  <p className="text-lg mb-2">
+                    Created at: {review.created_at}
+                  </p>
+                  <p className="text-gray-700">
+                    {limitWord(review.content, 50)}
+                  </p>
                 </div>
               ))}
             </div>

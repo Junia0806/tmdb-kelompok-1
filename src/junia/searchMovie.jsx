@@ -118,7 +118,7 @@ const MovieSearch = () => {
                 onClick={() => {
                   navigate("/movie-detail", { state: { id: movie.id } });
                 }}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
+                className="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4 w-72 text-center transition duration-300 ease-in-out transform hover:scale-105"
               >
                 Detail {movie.title}
               </button>
