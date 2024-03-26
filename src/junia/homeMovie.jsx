@@ -35,7 +35,7 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                to={`/movie-popular`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
                   Popular
