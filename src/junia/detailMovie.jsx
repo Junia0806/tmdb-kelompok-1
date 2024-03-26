@@ -61,12 +61,6 @@ export default function MovieDetail() {
             <h2 className="mb-2">Popularity: {detail?.popularity} viewers</h2>
             <h2 className="mb-2">Runtime: {detail?.runtime} minutes</h2>
             <p className="text-gray-800 mb-4">{detail?.overview}</p>
-            <Link
-              to={"/movie"}
-              className="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4 w-72 text-center transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              BACK TO SEARCH MOVIE
-            </Link>
           </div>
           <div className="flex-1 flex justify-center items-center">
             <img
