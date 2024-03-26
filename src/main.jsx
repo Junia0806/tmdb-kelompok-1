@@ -9,6 +9,7 @@ import MovieDetail from "./junia/detailMovie";
 import TrendingMovie from "./Hilzi/trendingMovies";
 import PopularMovie from "./eka/PopularMovie";
 import FavMovies from "./caca/FavMovies";
+import NowPlaying from "./andika-branch/movie";
 
 
 //mengisiasi object router 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
     path: "/movie-favorite",
     element: <FavMovies/>,
   },
+  {
+    path: "/movie-now",
+    element: <NowPlaying/>,
+  }, 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
