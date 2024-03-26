@@ -5,6 +5,7 @@ import "./index.css";
 import Home from "./junia/homeMovie";
 import MovieSearch from "./junia/searchMovie";
 import MovieDetail from "./junia/detailMovie";
+import TrendingMovie from "./Hilzi/trendingMovies";
 
 
 //mengisiasi object router 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/movie-detail",
     element: <MovieDetail/>,
+  },
+  {
+    path: "/movie-trending",
+    element: <TrendingMovie/>,
   },
 ]);
 

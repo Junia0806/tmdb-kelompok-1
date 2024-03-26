@@ -11,7 +11,7 @@ export default function Home() {
             <ul className="flex space-x-10 text-xl">
               <li>
                 <Link
-                  to={`/movie`}
+                  to={`/movie-trending`}
                   className="text-white hover:text-gray-300 transition duration-300"
                 >
                   Trending
