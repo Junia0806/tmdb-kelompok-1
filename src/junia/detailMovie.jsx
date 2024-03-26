@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import NoImage from "../assets/foto.png"
 
 const API_KEY = "3d46ebf198dce59fc5e125d9ec59e72a";
 
@@ -93,7 +94,7 @@ export default function MovieDetail() {
                     src={
                       review.author_details.avatar_path
                         ? `https://image.tmdb.org/t/p/w500/${review.author_details.avatar_path}`
-                        : `./public/foto.png` // Ganti dengan path gambar default Anda
+                        : NoImage // Ganti dengan path gambar default Anda
                     }
                     alt={`Avatar of ${review.author}`}
                     className="w-16 h-16 rounded-full mb-2"
