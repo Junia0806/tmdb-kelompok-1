@@ -1,10 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import Home from "./junia/homeMovie";
+import MovieSearch from "./junia/searchMovie";
+import MovieDetail from "./junia/detailMovie";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+//mengisiasi object router 
+const router = createBrowserRouter([
+  {
+    path: "/", //menentukan url
+    element: <Home/>, //komponen yang akan ditampilkan
+  },
+  {
+    path: "/movie",
+    element: <MovieSearch/>,
+  },
+  {
+    path: "/movie-detail",
+    element: <MovieDetail/>,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
