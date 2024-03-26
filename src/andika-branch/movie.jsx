@@ -41,7 +41,6 @@ const NowPlaying = () => {
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-2">{movie.title}</h2>
               <p className="text-gray-500 mb-4">{movie.release_date}</p>
-              <p className="text-gray-700 mb-4">{movie.overview}</p>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Rating: {movie.vote_average}</span>
               </div>
