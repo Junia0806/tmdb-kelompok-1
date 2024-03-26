@@ -13,6 +13,12 @@ const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
 
+  function limitWord(text, limit) {
+    const words = text.split(/\s+/); // Split teks berdasarkan spasi
+    const slicedText = words.slice(0, limit).join(" "); // Ambil hanya jumlah kata sesuai limit
+    return slicedText + (words.length > limit ? "..." : ""); // Tambahkan elipsis jika jumlah kata melebihi limit
+  }
+
   const searchMovies = async () => {
     try {
       const response = await axios.get(
@@ -104,14 +110,18 @@ const MovieSearch = () => {
             className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between"
           >
             <div>
-              <h2 className="text-gray-600 mb-2">
-                Release Date: {movie.release_date}
-              </h2>
+             
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
                 className="rounded-md"
               />
+               <h2 className="text-gray-600 mb-2">
+                Release Date: {movie.release_date}
+              </h2>
+              <p className="text-gray-700">
+                    {limitWord(movie.overview, 20)}
+                  </p>
             </div>
             <div className="flex justify-center">
               <button

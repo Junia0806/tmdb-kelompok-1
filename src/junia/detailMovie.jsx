@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import NoImage from "../assets/foto.png"
+import NoImage from "../assets/foto.png";
 
 const API_KEY = "3d46ebf198dce59fc5e125d9ec59e72a";
 
@@ -50,7 +50,14 @@ export default function MovieDetail() {
   return (
     <div className="mx-auto p-4">
       <div className="bg-white rounded-lg shadow-lg p-4">
-        <div className="flex p-10">
+        <div className="flex flex-col lg:flex-row p-5">
+          <div className="flex-1 flex justify-center items-center mt-8 lg:mt-0">
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${detail?.poster_path}`}
+              alt={detail?.title}
+              className="w-auto max-h-96 rounded-lg"
+            />
+          </div>
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-2 text-blue-900">
               {detail?.title}
@@ -62,13 +69,6 @@ export default function MovieDetail() {
             <h2 className="mb-2">Popularity: {detail?.popularity} viewers</h2>
             <h2 className="mb-2">Runtime: {detail?.runtime} minutes</h2>
             <p className="text-gray-800 mb-4">{detail?.overview}</p>
-          </div>
-          <div className="flex-1 flex justify-center items-center">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${detail?.poster_path}`}
-              alt={detail?.title}
-              className="w-auto max-h-96 rounded-lg"
-            />
           </div>
         </div>
 
