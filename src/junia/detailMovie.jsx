@@ -93,7 +93,7 @@ export default function MovieDetail() {
                     src={
                       review.author_details.avatar_path
                         ? `https://image.tmdb.org/t/p/w500/${review.author_details.avatar_path}`
-                        : "public/foto.png" // Ganti dengan path gambar default Anda
+                        : `./public/foto.png` // Ganti dengan path gambar default Anda
                     }
                     alt={`Avatar of ${review.author}`}
                     className="w-16 h-16 rounded-full mb-2"
